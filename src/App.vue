@@ -19,31 +19,39 @@ export default {
     return {
       apiKey: 'a5d177e96f7332485dbdb94d539665db',
       apiUrlMovies: 'https://api.themoviedb.org/3/search/movie',
+      apiUrlSeries: 'https://api.themoviedb.org/3/search/tv',
       query: '',
       moviesList: [],
+      seriesList: [],
     }
   },
   methods:{
     getMovies: function (){
-      console.log(`${this.apiUrlMovies}?api_key=${this.apiKey}`)
       axios.get(`${this.apiUrlMovies}?api_key=${this.apiKey}&query=${this.query}`)
       .then(response => {
         this.moviesList = response.data.results;
-        console.log(response.data.results);
       })
       .catch(error => {
         console.log(error);
       })
     },
+    getTvSeries: function (){
+      axios.get(`${this.apiUrlSeries}?api_key=${this.apiKey}&query=${this.query}`)
+      .then(response => {
+        this.seriesList = response.data.results;
+        console.log(this.seriesList);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    },
+    
     setQuery: function (query){
       this.query = query;
       this.getMovies();
-      console.log(this.query);
+      this.getTvSeries();
     }
   },
-  created(){
-    /* this.getMovies(); */
-  }
 }
 </script>
 

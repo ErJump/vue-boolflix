@@ -1,12 +1,17 @@
 <template>
   <div class="container py-5">
     <div class="row">
-      <ul v-for="movie in moviesArray" :key="movie.id">
-        <li>Titolo: {{movie.title}}</li>
-        <li>Titolo Originale: {{movie.original_title}}</li>
-        <li>Lingua: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
-        <li>Voto: {{movie.vote_average}}</li>
-      </ul>
+      <div class="col-6">
+        <ul v-for="movie in moviesArray" :key="movie.id">
+          <li>Titolo: {{movie.title}}</li>
+          <li>Titolo Originale: {{movie.original_title}}</li>
+          <li>Lingua: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
+          <li>Voto: {{movie.vote_average}}</li>
+        </ul>
+      </div>
+      <div class="col-6">
+        
+      </div>
     </div>
   </div>
 </template>

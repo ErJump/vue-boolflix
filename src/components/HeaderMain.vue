@@ -28,7 +28,6 @@ export default {
   methods: {
     setSearch: function (search) {
       this.searchValue = search;
-      console.log(this.searchValue);
       this.sendSearchValue();
     },
     sendSearchValue: function () {
