@@ -16,6 +16,7 @@ export default {
   methods: {
     sendInputText: function () {
       this.$emit('search', this.inputText);
+      this.inputText = '';
     }
   }
 }
