@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input v-model.trim="inputText" type="text">
+    <input v-model.trim="inputText" type="text" placeholder="search...">
     <button @click="sendInputText">Search</button>
   </div>
 </template>
