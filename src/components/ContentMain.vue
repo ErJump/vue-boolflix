@@ -4,7 +4,7 @@
       <ul v-for="movie in moviesArray" :key="movie.id">
         <li>Titolo: {{movie.title}}</li>
         <li>Titolo Originale: {{movie.original_title}}</li>
-        <li>Lingua: {{movie.original_language}}</li>
+        <li>Lingua: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
         <li>Voto: {{movie.vote_average}}</li>
       </ul>
     </div>
@@ -20,6 +20,15 @@ export default {
       required: true
     }
   },
+  methods:{
+    changeFlag: function (lang){
+      switch (lang) {
+        case 'en':
+          return 'gb';
+      }
+      return lang
+    }
+  }
 }
 </script>
 
