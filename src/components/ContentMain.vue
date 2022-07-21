@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-6">
         <h2>Movies</h2>
-        <ul v-for="movie in moviesArray" :key="movie.id">
+        <ul class="py-2" v-for="movie in moviesArray" :key="movie.id">
+          <img class="w-50" :src="`${apiImgUrl}${movie.poster_path}`" :alt="movie.title">
           <li>Title: {{movie.title}}</li>
           <li>Original Title: {{movie.original_title}}</li>
           <li>Original Language: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
@@ -12,7 +13,8 @@
       </div>
       <div class="col-6">
         <h2>TV Series</h2>
-        <ul v-for="serie in seriesArray" :key="serie.id">
+        <ul class="py-2" v-for="serie in seriesArray" :key="serie.id">
+          <img class="w-50" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
           <li>Title: {{serie.name}}</li>
           <li>Original Title: {{serie.original_name}}</li>
           <li>Original Language: <span :class="`fi fi-${changeFlag(serie.original_language)}`"></span></li>
@@ -36,6 +38,11 @@ export default {
       required: true
     }
   },
+  data: function () {
+    return {
+      apiImgUrl: 'https://image.tmdb.org/t/p/w780',
+    }
+  },
   methods:{
     changeFlag: function (lang){
       switch (lang) {
@@ -45,6 +52,8 @@ export default {
           return 'jp';
         case 'ko':
           return 'kr';
+        case 'cs':
+          return 'cz';
       }
       return lang
     }
