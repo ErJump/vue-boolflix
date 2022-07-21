@@ -22,13 +22,17 @@ export default {
   },
   data: function () {
     return {
-      search: '',
+      searchValue: '',
     }
   },
   methods: {
     setSearch: function (search) {
-      this.search = search;
-      console.log(this.search);
+      this.searchValue = search;
+      console.log(this.searchValue);
+      this.sendSearchValue();
+    },
+    sendSearchValue: function () {
+      this.$emit('search', this.searchValue);
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderMain/>
+    <HeaderMain @search="setQuery"/>
     <ContentMain/>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
     return {
       apiKey: 'a5d177e96f7332485dbdb94d539665db',
       apiUrlMovies: 'https://api.themoviedb.org/3/search/movie',
-      query: 'star',
+      query: '',
     }
   },
   methods:{
@@ -32,6 +32,10 @@ export default {
       .catch(error => {
         console.log(error);
       })
+    },
+    setQuery: function (query){
+      this.query = query;
+      console.log(this.query);
     }
   },
   created(){
