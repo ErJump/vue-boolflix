@@ -10,7 +10,9 @@
         </ul>
       </div>
       <div class="col-6">
-        
+        <ul v-for="serie in seriesArray" :key="serie.id">
+          <li>Serie n* {{serie.id}}</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -21,6 +23,10 @@ export default {
   name: 'ContentMain',
   props: {
     moviesArray: {
+      type: Array,
+      required: true
+    },
+    seriesArray: {
       type: Array,
       required: true
     }
