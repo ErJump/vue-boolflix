@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderMain @search="setQuery"/>
-    <ContentMain/>
+    <ContentMain :moviesArray="moviesList"/>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
       apiKey: 'a5d177e96f7332485dbdb94d539665db',
       apiUrlMovies: 'https://api.themoviedb.org/3/search/movie',
       query: '',
+      moviesList: [],
     }
   },
   methods:{
@@ -27,6 +28,7 @@ export default {
       console.log(`${this.apiUrlMovies}?api_key=${this.apiKey}`)
       axios.get(`${this.apiUrlMovies}?api_key=${this.apiKey}&query=${this.query}`)
       .then(response => {
+        this.moviesList = response.data.results;
         console.log(response.data.results);
       })
       .catch(error => {
@@ -35,11 +37,12 @@ export default {
     },
     setQuery: function (query){
       this.query = query;
+      this.getMovies();
       console.log(this.query);
     }
   },
   created(){
-    this.getMovies();
+    /* this.getMovies(); */
   }
 }
 </script>

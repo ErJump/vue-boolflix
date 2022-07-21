@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <h1>Main</h1>
+  <div class="container">
+    <div class="row">
+      <ul v-for="(movie, index) in moviesArray" :key="index">
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -8,8 +11,11 @@
 export default {
   name: 'ContentMain',
   props: {
-
-  }
+    moviesArray: {
+      type: Array,
+      required: true
+    }
+  },
 }
 </script>
 
