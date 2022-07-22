@@ -19,7 +19,6 @@
               <button @click="getMovieCast(movie.id); changeActiveInfo()" class="ms_button position-absolute d-flex align-items-center justify-content-center"><i class="text-white fa-solid fa-angle-right"></i></button>
             </ul>
             <div @mouseleave="setActiveInfoFalse()" v-if="activeInfo" class="position-absolute ms_card_info text-white d-flex justify-content-center align-items-center">
-              
               <ul class="d-flex flex-column justify-content-center">
                 <span>Cast:</span>
                 <li v-for="member in cast" :key="member.id">{{member.name}}</li>

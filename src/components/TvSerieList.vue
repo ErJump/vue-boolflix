@@ -16,7 +16,15 @@
                 <i v-for="vote in getVoteAverage(serie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
                 <span v-if="serie.vote_average == 0">-</span> 
               </li>
+              <button @click="getTvSeriesCast(serie.id); changeActiveInfo()" class="ms_button position-absolute d-flex align-items-center justify-content-center"><i class="text-white fa-solid fa-angle-right"></i></button>
             </ul>
+            <div @mouseleave="setActiveInfoFalse()" v-if="activeInfo" class="position-absolute ms_card_info text-white d-flex justify-content-center align-items-center">
+              <ul class="d-flex flex-column justify-content-center">
+                <span>Cast:</span>
+                <li v-for="member in cast" :key="member.id">{{member.name}}</li>
+              </ul>
+              <button @click="changeActiveInfo()" class="d-flex justify-content-center align-items-center ms_button position-absolute"><i class="text-white fa-solid fa-angle-left"></i></button>
+            </div>
           </div>
         </div>
       </div>
@@ -24,6 +32,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'TvSerieList',
   props:{
@@ -35,6 +45,10 @@ export default {
   data: function () {
     return {
       apiImgUrl: "https://image.tmdb.org/t/p/w342",
+      apiKey: 'a5d177e96f7332485dbdb94d539665db',
+      apiUrl: 'https://api.themoviedb.org/3/tv/',
+      cast: [],
+      activeInfo: false,
     }
   },
   methods: {
@@ -53,6 +67,23 @@ export default {
     },
     getVoteAverage: function (vote){
       return Math.round(vote / 2);
+    },
+    getTvSeriesCast: function (id){
+      axios.get(`${this.apiUrl}${id}/credits?api_key=${this.apiKey}`)
+      .then(response => {
+        this.cast = response.data.cast;
+        this.cast.splice(5);
+        console.log(this.cast);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+    changeActiveInfo: function (){
+      this.activeInfo = !this.activeInfo;
+    },
+    setActiveInfoFalse: function (){
+      this.activeInfo = false;
     }
   }
 }
@@ -102,5 +133,33 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 70%;
+  }
+  .ms_button{
+  padding: 10px;
+  background-color: black;
+  border: none;
+  align-items: center!important;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  width: 38px;
+  }
+  .ms_card_info{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    z-index: 2;
+    gap: 1rem;
+  }
+  .ms_active{
+    display: flex;
   }
 </style>
