@@ -8,7 +8,7 @@
           <div class="ms_backcard">
             <img class="ms_img_back " v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
             <img v-else class="ms_img_back" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
-            <ul>
+            <ul class="w-75">
               <li>Title: {{serie.name}}</li>
               <li>Original Title: {{serie.original_name}}</li>
               <li>Original Language: <span :class="`fi fi-${changeFlag(serie.original_language)}`"></span></li>
@@ -19,12 +19,12 @@
               <button @click="getTvSeriesCast(serie.id); changeActiveInfo()" class="ms_button position-absolute d-flex align-items-center justify-content-center"><i class="text-white fa-solid fa-angle-right"></i></button>
             </ul>
             <div @mouseleave="setActiveInfoFalse()" v-if="activeInfo" class="position-absolute ms_card_info text-white d-flex justify-content-center align-items-center">
-              <ul class="d-flex flex-column justify-content-center">
-                <span>Cast:</span>
+              <ul class="w-75">
+                <h5>Cast:</h5>
                 <li v-for="member in cast" :key="member.id">{{member.name}}</li>
               </ul>
-              <ul>
-                <span>Genres:</span>
+              <ul class="w-75">
+                <h5>Genres:</h5>
                 <li v-for="(genre, index) in serie.genre_ids" :key="index">{{mapGenres(genre)}}</li>
               </ul>
               <button @click="changeActiveInfo()" class="d-flex justify-content-center align-items-center ms_button position-absolute"><i class="text-white fa-solid fa-angle-left"></i></button>
@@ -153,7 +153,7 @@ export default {
   .ms_img_back{
     object-fit: cover;
     width: 100%;
-    height: 70%;
+    height: 50%;
   }
   .ms_button{
   padding: 10px;

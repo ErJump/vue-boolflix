@@ -8,7 +8,7 @@
           <div class="ms_backcard">
             <img class="ms_img_back " v-if="movie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="movie.name">
             <img v-else class="ms_img_back" :src="`${apiImgUrl}${movie.poster_path}`" :alt="movie.name">
-            <ul>
+            <ul class="w-75">
               <li>Title: {{movie.title}}</li>
               <li>Original Title: {{movie.original_title}}</li>
               <li>Original Language: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
@@ -19,12 +19,12 @@
               <button @click="getMovieCast(movie.id); changeActiveInfo()" class="ms_button position-absolute d-flex align-items-center justify-content-center"><i class="text-white fa-solid fa-angle-right"></i></button>
             </ul>
             <div @mouseleave="setActiveInfoFalse()" v-if="activeInfo" class="position-absolute ms_card_info text-white d-flex justify-content-center align-items-center">
-              <ul>
-                <span>Cast:</span>
+              <ul class="w-75 px-3">
+                <h5>Cast:</h5>
                 <li v-for="member in cast" :key="member.id">{{member.name}}</li>
               </ul>
-              <ul>
-                <span>Genres:</span>
+              <ul class="w-75 px-3">
+                <h5>Genres:</h5>
                 <li v-for="(genre, index) in movie.genre_ids" :key="index">{{mapGenres(genre)}}</li>
               </ul>
               <button @click="changeActiveInfo()" class="d-flex justify-content-center align-items-center ms_button position-absolute"><i class="text-white fa-solid fa-angle-left"></i></button>
@@ -130,6 +130,7 @@ export default {
       color: white;
     }
     ul{
+      width: 80%;
       list-style: none;
       padding: 0;
       margin: 0;
@@ -154,7 +155,7 @@ export default {
   .ms_img_back{
     object-fit: cover;
     width: 100%;
-    height: 70%;
+    height: 50%;
   }
   .ms_button{
   padding: 10px;
@@ -184,5 +185,7 @@ export default {
   .ms_active{
     display: flex;
   }
-  
+  /* *{
+    outline: 1px solid red;
+  } */
 </style>
