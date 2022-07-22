@@ -31,6 +31,7 @@ export default {
     };
   },
   methods: {
+    //prende i generi dei film dalla api
     getMoviesGenres: function (){
       axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
       .then(response => {

@@ -26,6 +26,7 @@ export default {
     }
   },
   methods:{
+    //chiamata per i film in base alla query
     getMovies: function (){
       axios.get(`${this.apiUrlMovies}?api_key=${this.apiKey}&query=${this.query}`)
       .then(response => {
@@ -35,6 +36,7 @@ export default {
         console.log(error);
       })
     },
+    //chiamata per le serie tv in base alla query
     getTvSeries: function (){
       axios.get(`${this.apiUrlSeries}?api_key=${this.apiKey}&query=${this.query}`)
       .then(response => {
@@ -44,7 +46,7 @@ export default {
         console.log(error);
       })
     },
-    
+    //setta la query e invoca le chiamate per i film e le serie tv
     setQuery: function (query){
       this.query = query;
       this.getMovies();
@@ -58,9 +60,7 @@ export default {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~flag-icons/css/flag-icons.css";
-  /* *{
-    outline: 1px solid red;
-  } */
+
   #app{
     position: relative;
   }

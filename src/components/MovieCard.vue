@@ -57,6 +57,7 @@ export default {
     }
   },
   methods: {
+    //cambia le iso code della lingua in una bandiera
     changeFlag: function (lang) {
       switch (lang) {
           case "en":
@@ -70,26 +71,30 @@ export default {
       }
       return lang;
     },
+    //chiamata all'api per ottenere il cast di un film, tenendo solo i primi 5 membri
     getMovieCast: function (id){
       axios.get(`${this.apiUrl}${id}/credits?api_key=${this.apiKey}`)
       .then(response => {
         this.cast = response.data.cast;
         this.cast.splice(5);
-        console.log(this.cast);
       })
       .catch(error => {
         console.log(error);
       });
     },
+    //restituisce i valori del voto medio, arrotondati, per una scala da 0 a 5
     getVoteAverage: function (vote){
       return Math.round(vote / 2);
     },
+    //cambia lo stato di activeInfo
     changeActiveInfo: function (){
       this.activeInfo = !this.activeInfo;
     },
+    //imposta active info a false
     setActiveInfoFalse: function (){
       this.activeInfo = false;
     },
+    //restituisce il nome del genere dall'id del genere
     mapGenres: function (id){
       return this.genres.find(genre => genre.id == id).name;
     }
@@ -97,7 +102,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .ms_backcard{
     position: absolute;

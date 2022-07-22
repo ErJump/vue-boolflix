@@ -31,7 +31,8 @@ export default {
     };
   },
   methods: {
-    getTvSeriessGenres: function (){
+    //prende i generi delle serie tv dalla api
+    getTvSeriesGenres: function (){
       axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
       .then(response => {
         this.genres = response.data.genres;
@@ -42,7 +43,7 @@ export default {
     },
   },
   created: function () {
-    this.getTvSeriessGenres();
+    this.getTvSeriesGenres();
   },
 }
 </script>

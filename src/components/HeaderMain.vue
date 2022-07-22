@@ -27,10 +27,12 @@ export default {
     }
   },
   methods: {
+    //setta la variabile searchValue con il valore passato dalla SearchBar e invoca la funzione di emit
     setSearch: function (search) {
       this.searchValue = search;
       this.sendSearchValue();
     },
+    //emit per la variabile searchValue
     sendSearchValue: function () {
       this.$emit('search', this.searchValue);
     }
@@ -38,7 +40,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "../assets/styles/variables.scss";
   header{
