@@ -2,11 +2,15 @@
     <div class="col-6">
         <h2>TV Series</h2>
         <ul class="py-2" v-for="serie in seriesArray" :key="serie.id">
-          <img class="w-50" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
+          <img v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
+          <img v-else class="w-50" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
           <li>Title: {{serie.name}}</li>
           <li>Original Title: {{serie.original_name}}</li>
           <li>Original Language: <span :class="`fi fi-${changeFlag(serie.original_language)}`"></span></li>
-          <li>Vote Average: {{serie.vote_average}}</li>
+          <li>Vote Average: 
+            <i v-for="vote in getVoteAverage(serie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
+            <span v-if="serie.vote_average == 0">-</span> 
+          </li>
         </ul>
       </div>
 </template>
@@ -22,7 +26,7 @@ export default {
   },
   data: function () {
     return {
-      apiImgUrl: "https://image.tmdb.org/t/p/w780",
+      apiImgUrl: "https://image.tmdb.org/t/p/w342",
     }
   },
   methods: {
@@ -38,6 +42,9 @@ export default {
               return "cz";
       }
       return lang;
+    },
+    getVoteAverage: function (vote){
+      return Math.round(vote / 2);
     }
   }
 }

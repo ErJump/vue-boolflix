@@ -26,7 +26,7 @@ export default {
   },
   data: function () {
     return {
-      apiImgUrl: "https://image.tmdb.org/t/p/w780",
+      apiImgUrl: "https://image.tmdb.org/t/p/w342",
     }
   },
   methods: {
