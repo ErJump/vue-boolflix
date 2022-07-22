@@ -2,7 +2,8 @@
     <div class="col-6">
       <h2>Movies</h2>
       <ul class="py-2" v-for="movie in moviesArray" :key="movie.id">
-        <img class="w-50" :src="`${apiImgUrl}${movie.poster_path}`" :alt="movie.title">
+        <img v-if="movie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="movie.name">
+        <img v-else class="w-50" :src="`${apiImgUrl}${movie.poster_path}`" :alt="movie.title">
         <li>Title: {{movie.title}}</li>
         <li>Original Title: {{movie.original_title}}</li>
         <li>Original Language: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>

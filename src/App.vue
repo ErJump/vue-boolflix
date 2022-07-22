@@ -39,7 +39,6 @@ export default {
       axios.get(`${this.apiUrlSeries}?api_key=${this.apiKey}&query=${this.query}`)
       .then(response => {
         this.seriesList = response.data.results;
-        console.log(this.seriesList);
       })
       .catch(error => {
         console.log(error);
