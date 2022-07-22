@@ -41,7 +41,11 @@ export default {
     movie: {
       type: Object,
       required: true
-    }
+    },
+    genres: {
+      type: Array,
+      required: true
+    },
   },
   data: function () {
     return {
@@ -50,9 +54,6 @@ export default {
       apiUrl: 'https://api.themoviedb.org/3/movie/',
       cast: [],
       activeInfo: false,
-      apiGenresUrl: 'https://api.themoviedb.org/3/genre/movie/list?api_key=',
-      apiLanguage: '&language=en-US',
-      genres: [],
     }
   },
   methods: {
@@ -89,22 +90,10 @@ export default {
     setActiveInfoFalse: function (){
       this.activeInfo = false;
     },
-    getMoviesGenres: function (){
-      axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
-      .then(response => {
-        this.genres = response.data.genres;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    },
     mapGenres: function (id){
       return this.genres.find(genre => genre.id == id).name;
     }
   },
-  created: function () {
-    this.getMoviesGenres();
-  }
 }
 </script>
 
