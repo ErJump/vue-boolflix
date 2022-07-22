@@ -6,12 +6,16 @@
         <li>Title: {{movie.title}}</li>
         <li>Original Title: {{movie.original_title}}</li>
         <li>Original Language: <span :class="`fi fi-${changeFlag(movie.original_language)}`"></span></li>
-        <li>Vote Average: {{movie.vote_average}}</li>
+        <li>Vote Average: 
+          <i v-for="vote in getVoteAverage(movie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
+          <span v-if="movie.vote_average == 0">-</span>
+        </li>
       </ul>
     </div>
 </template>
 
 <script>
+
 export default {
   name: 'MovieList',
   props:{
@@ -38,8 +42,11 @@ export default {
               return "cz";
       }
       return lang;
+    },
+    getVoteAverage: function (vote){
+      return Math.round(vote / 2);
     }
-  }
+  },
 }
 </script>
 
