@@ -73,7 +73,6 @@ export default {
       .then(response => {
         this.cast = response.data.cast;
         this.cast.splice(5);
-        console.log(this.cast);
       })
       .catch(error => {
         console.log(error);
