@@ -39,7 +39,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  /* *{
-    outline: 1px solid red;
-  } */
+  @import "../assets/styles/variables.scss";
 </style>
