@@ -59,6 +59,6 @@ export default {
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~flag-icons/css/flag-icons.css";
   *{
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
   }
 </style>

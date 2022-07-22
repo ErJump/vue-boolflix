@@ -1,5 +1,5 @@
 <template>
-  <div class="ms_bg py-3">
+  <header class="ms_bg py-3">
     <div class="container-fluid px-5">
       <div class="row justify-content-between">
         <div class="col-2">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -41,6 +41,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "../assets/styles/variables.scss";
+  header{
+    height: 100px;
+  }
   .ms_avatar {
     width: 50px;
     height: 50px;
