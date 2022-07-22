@@ -16,8 +16,10 @@ export default {
   methods: {
     //emit per la variabile inputText e resetta inputText
     sendInputText: function () {
-      this.$emit('search', this.inputText);
-      this.inputText = '';
+      if (this.inputText.length > 0) {
+        this.$emit('search', this.inputText);
+        this.inputText = '';
+      }
     }
   }
 }
