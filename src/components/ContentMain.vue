@@ -1,10 +1,10 @@
 <template>
   <main>
     <div class="container-xxl py-5">
-      <div class="row">
+      <div class="row py-3">
         <MovieList :moviesArray="moviesArray" />
       </div>
-      <div class="row">
+      <div class="row py-3">
         <TvSerieList :seriesArray="seriesArray" />        
       </div>
     </div>
@@ -38,6 +38,7 @@ export default {
   @import "../assets/styles/variables.scss";
   main{
     background-color: $bgMain;
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
+    padding-top: 120px;
   }
 </style>

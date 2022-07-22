@@ -43,6 +43,10 @@ export default {
   @import "../assets/styles/variables.scss";
   header{
     height: 100px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 20;
   }
   .ms_avatar {
     width: 50px;
