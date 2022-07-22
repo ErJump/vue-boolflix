@@ -3,7 +3,7 @@
       <h2 class="text-white">Movies</h2>
       <div class="row">
         <div class="col-3 ms_card py-2 position-relative" v-for="movie in moviesArray" :key="movie.id">
-          <img class="w-100" v-if="movie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="movie.name">
+          <img class="w-100" v-if="movie.poster_path == null || movie.poster == ''" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="movie.name">
           <img v-else class="w-100" :src="`${apiImgUrl}${movie.poster_path}`" :alt="movie.name">
           <div class="ms_backcard">
             <img class="ms_img_back " v-if="movie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="movie.name">
@@ -104,4 +104,5 @@ export default {
     width: 100%;
     height: 70%;
   }
+  
 </style>

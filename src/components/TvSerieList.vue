@@ -3,7 +3,7 @@
       <h2 class="text-white">TV Series</h2>
       <div class="row">
         <div class="col-3 ms_card py-2 position-relative" v-for="serie in seriesArray" :key="serie.id">
-          <img class="w-100" v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
+          <img class="w-100" v-if="serie.poster_path == null || serie.poster == ''" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
           <img v-else class="w-100" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
           <div class="ms_backcard">
             <img class="ms_img_back " v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
