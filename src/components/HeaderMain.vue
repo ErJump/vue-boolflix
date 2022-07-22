@@ -1,12 +1,13 @@
 <template>
-  <div class="bg-dark py-3">
-    <div class="container">
+  <div class="ms_bg py-3">
+    <div class="container-fluid px-5">
       <div class="row justify-content-between">
         <div class="col-2">
-          <h1 class="text-white">Header</h1>
+          <img class="w-50" src="../assets/img/boolflix-logo.png" alt="boolflix logo">
         </div>
-        <div class="col-3 d-flex align-items-center">
+        <div class="col-3 d-flex align-items-center justify-content-end">
           <SearchBar @search="setSearch"/>
+          <img class="ms_avatar rounded-2" src="../assets/img/avatar.png" alt="avatar">
         </div>
       </div>
     </div>
@@ -40,4 +41,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import "../assets/styles/variables.scss";
+  .ms_avatar {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+  }
+  .ms_bg {
+    background-image: linear-gradient($bgHeaderFirst, $bgHeaderSecond);
+  }
 </style>
