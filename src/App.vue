@@ -56,6 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~flag-icons/css/flag-icons.css";
 </style>
