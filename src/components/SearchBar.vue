@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 d-flex">
     <button class="ms_button px-2 py-1" @click="sendInputText"><i class="text-white ms_size fa-solid fa-magnifying-glass"></i></button>
-    <input class="ms_text_input px-3 py-1" v-model.trim="inputText" type="text" placeholder="search...">
+    <input class="ms_text_input px-3 py-1" @keyup.enter="sendInputText" v-model.trim="inputText" type="text" placeholder="search...">
   </div>
 </template>
 
