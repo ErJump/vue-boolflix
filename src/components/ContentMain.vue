@@ -1,9 +1,11 @@
 <template>
   <main>
-    <div class="container py-5">
+    <div class="container-xxl py-5">
       <div class="row">
         <MovieList :moviesArray="moviesArray" />
-        <TvSerieList :seriesArray="seriesArray" />
+      </div>
+      <div class="row">
+        <TvSerieList :seriesArray="seriesArray" />        
       </div>
     </div>
   </main>

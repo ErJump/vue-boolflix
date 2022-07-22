@@ -1,17 +1,25 @@
 <template>
-    <div class="col-6">
-        <h2>TV Series</h2>
-        <ul class="py-2" v-for="serie in seriesArray" :key="serie.id">
-          <img v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
-          <img v-else class="w-50" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
-          <li>Title: {{serie.name}}</li>
-          <li>Original Title: {{serie.original_name}}</li>
-          <li>Original Language: <span :class="`fi fi-${changeFlag(serie.original_language)}`"></span></li>
-          <li>Vote Average: 
-            <i v-for="vote in getVoteAverage(serie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
-            <span v-if="serie.vote_average == 0">-</span> 
-          </li>
-        </ul>
+    <div class="col-12">
+        <h2 class="text-white">TV Series</h2>
+        <div class="row">
+          <div class="col-3 ms_card py-2 position-relative" v-for="serie in seriesArray" :key="serie.id">
+            <img class="w-100" v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
+            <img v-else class="w-100" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
+            <div class="ms_backcard">
+              <img class="ms_img_back " v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
+              <img v-else class="ms_img_back" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
+              <ul>
+                <li>Title: {{serie.name}}</li>
+                <li>Original Title: {{serie.original_name}}</li>
+                <li>Original Language: <span :class="`fi fi-${changeFlag(serie.original_language)}`"></span></li>
+                <li>Vote Average: 
+                  <i v-for="vote in getVoteAverage(serie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
+                  <span v-if="serie.vote_average == 0">-</span> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 </template>
 
@@ -52,5 +60,44 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+  .ms_backcard{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    gap: 1rem;
+    *{
+      color: white;
+    }
+    ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    i{
+      color: rgb(216, 168, 45)
+    }
+  }
+  .ms_card{
+    transition: .5s;
+    &:hover{
+      transform: scale(1.2);
+      z-index: 4;
+    }
+  }
+  .ms_card:hover .ms_backcard{
+    display: flex;
+  }
+  .ms_img_back{
+    width: 50%;
+    /* height: 50%; */
+    object-fit: contain;
+  }
 </style>
