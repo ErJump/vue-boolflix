@@ -16,6 +16,7 @@
                 <i v-for="vote in getVoteAverage(movie.vote_average)" :key="vote" class="fa-solid fa-star"></i>
                 <span v-if="movie.vote_average == 0">-</span> 
               </li>
+              <button @click="getFilmCast(movie.id)" class="ms_button position-absolute d-flex align-items-center justify-content-center"><i class="text-white fa-solid fa-angle-right"></i></button>
             </ul>
           </div>
         </div>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'MovieList',
@@ -36,6 +38,9 @@ export default {
   data: function () {
     return {
       apiImgUrl: "https://image.tmdb.org/t/p/w342",
+      apiKey: 'a5d177e96f7332485dbdb94d539665db',
+      apiUrl: 'https://api.themoviedb.org/3/movie/',
+      cast: [],
     }
   },
   methods: {
@@ -51,6 +56,17 @@ export default {
               return "cz";
       }
       return lang;
+    },
+    getFilmCast: function (id){
+      axios.get(`${this.apiUrl}${id}/credits?api_key=${this.apiKey}`)
+      .then(response => {
+        this.cast = response.data.cast;
+        this.cast.splice(5);
+        console.log(this.cast);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     },
     getVoteAverage: function (vote){
       return Math.round(vote / 2);
@@ -104,5 +120,18 @@ export default {
     width: 100%;
     height: 70%;
   }
+  .ms_button{
+  padding: 10px;
+  background-color: black;
+  border: none;
+  align-items: center!important;
+  display: flex;
+  border: 1px solid white;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  width: 38px;
+ }
+
   
 </style>
