@@ -23,6 +23,10 @@
                 <span>Cast:</span>
                 <li v-for="member in cast" :key="member.id">{{member.name}}</li>
               </ul>
+              <ul>
+                <span>Genres:</span>
+                <li v-for="(genre, index) in serie.genre_ids" :key="index">{{mapGenres(genre)}}</li>
+              </ul>
               <button @click="changeActiveInfo()" class="d-flex justify-content-center align-items-center ms_button position-absolute"><i class="text-white fa-solid fa-angle-left"></i></button>
             </div>
           </div>
@@ -49,6 +53,9 @@ export default {
       apiUrl: 'https://api.themoviedb.org/3/tv/',
       cast: [],
       activeInfo: false,
+      apiGenresUrl: 'https://api.themoviedb.org/3/genre/tv/list?api_key=',
+      apiLanguage: '&language=en-US',
+      genres: [],
     }
   },
   methods: {
@@ -83,7 +90,22 @@ export default {
     },
     setActiveInfoFalse: function (){
       this.activeInfo = false;
+    },
+    getTvSeriessGenres: function (){
+      axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
+      .then(response => {
+        this.genres = response.data.genres;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+    mapGenres: function (id){
+      return this.genres.find(genre => genre.id == id).name;
     }
+  },
+  created: function (){
+    this.getTvSeriessGenres();
   }
 }
 </script>
