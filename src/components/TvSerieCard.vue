@@ -4,8 +4,8 @@
       <img class="w-100" v-if="serie.poster_path == null || serie.poster == ''" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
       <img v-else class="w-100" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
       <div class="ms_backcard">
-        <img class="ms_img_back " v-if="serie.poster_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
-        <img v-else class="ms_img_back" :src="`${apiImgUrl}${serie.poster_path}`" :alt="serie.name">
+        <img class="ms_img_back " v-if="serie.backdrop_path == null" src="http://www.movienewz.com/img/films/poster-holder.jpg" :alt="serie.name">
+        <img v-else class="ms_img_back" :src="`${apiImgUrl}${serie.backdrop_path}`" :alt="serie.name">
         <ul class="w-75">
           <li>Title: {{serie.name}}</li>
           <li>Original Title: {{serie.original_name}}</li>
