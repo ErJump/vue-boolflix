@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <MovieCard v-for="movie in moviesArray" :key="movie.id" :movie="movie" :genres="genres"/>
+      <MovieCard v-for="movie in moviesArrayFiltered" :key="movie.id" :movie="movie" :genres="genres"/>
     </div>
   </div>
 </template>
@@ -59,6 +59,15 @@ export default {
   created: function () {
     this.getMoviesGenres();
   },
+  computed: {
+    //restituisce solo le serie tv che hanno il genere selezionato
+    moviesArrayFiltered: function (){
+      if(this.selected == ''){
+        return this.moviesArray;
+      }
+      return this.moviesArray.filter(serie => serie.genre_ids.includes(this.selected));
+    }
+  }
 }
 </script>
 
