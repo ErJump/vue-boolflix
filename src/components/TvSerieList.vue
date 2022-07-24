@@ -1,6 +1,15 @@
 <template>
   <div class="col-12">
-    <h2 class="text-white">TV Series</h2>
+    <div class="d-flex justify-content-between">
+      <h2 class="text-white">TV Series</h2>
+      <div class="d-flex align-items-center">
+        <label class="text-white me-3 fs-4">Genres filter:</label>
+        <select class="px-3 py-2" v-model="selected">
+          <option value="">All</option>
+          <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{mapGenres(genre.id)}}</option>
+        </select>
+      </div>
+    </div>
     <div class="row">
       <TvSerieCard v-for="serie in seriesArray" :key="serie.id" :serie="serie" :genres="genres"/>
     </div>
@@ -28,6 +37,7 @@ export default {
       apiGenresUrl: 'https://api.themoviedb.org/3/genre/tv/list?api_key=',
       apiLanguage: '&language=en-US',
       genres: [],
+      selected: '',
     };
   },
   methods: {
@@ -41,6 +51,10 @@ export default {
         console.log(error);
       });
     },
+    //restituisce il nome del genere in base all'id del genere
+    mapGenres: function (id){
+      return this.genres.find(genre => genre.id == id).name;
+    }
   },
   created: function () {
     this.getTvSeriesGenres();
