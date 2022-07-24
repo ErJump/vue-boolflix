@@ -1,10 +1,10 @@
 <template>
   <div class="col-12">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-3">
       <h2 class="text-white">TV Series</h2>
       <div class="d-flex align-items-center">
         <label class="text-white me-3 fs-4">Genres filter:</label>
-        <select class="px-3 py-2" v-model="selected">
+        <select class="px-3 py-2 ms_select" v-model="selected">
           <option value="">All</option>
           <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{mapGenres(genre.id)}}</option>
         </select>
@@ -72,4 +72,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../assets/styles/variables.scss";
+
+  .ms_select{
+    background-color: $bgMain;
+    color: white;
+  }
 </style>
