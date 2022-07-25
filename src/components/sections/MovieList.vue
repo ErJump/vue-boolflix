@@ -6,7 +6,7 @@
         <label class="text-white me-3 fs-4">Genres filter:</label>
         <select class="px-3 py-2 ms_select" v-model="selected">
           <option value="">All</option>
-          <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{mapGenres(genre.id)}}</option>
+          <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
         </select>
       </div>
     </div>
@@ -52,10 +52,6 @@ export default {
         console.log(error);
       });
     },
-    //restituisce il nome del genere in base all'id del genere
-    mapGenres: function (id){
-      return this.genres.find(genre => genre.id == id).name;
-    }
   },
   created: function () {
     this.getMoviesGenres();
