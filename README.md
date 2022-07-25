@@ -1,3 +1,5 @@
+![alt](src/assets/vue-boolflix.gif)
+
 # vue-boolflix
 
 ## Project setup
