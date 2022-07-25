@@ -11,6 +11,7 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-12 fs-4 ms_color_grey" v-if="moviesArrayFiltered == 0">No result</div>
       <MovieCard v-for="movie in moviesArrayFiltered" :key="movie.id" :movie="movie" :genres="genres"/>
     </div>
   </div>
@@ -74,8 +75,4 @@ export default {
 <style scoped lang="scss">
   @import "../assets/styles/variables.scss";
 
-  .ms_select{
-    background-color: $bgMain;
-    color: white;
-  }
 </style>

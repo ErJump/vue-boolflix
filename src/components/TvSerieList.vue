@@ -11,6 +11,7 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-12 fs-4 ms_color_grey" v-if="seriesArrayFiltered == 0">No result</div>
       <TvSerieCard v-for="serie in seriesArrayFiltered" :key="serie.id" :serie="serie" :genres="genres"/>
     </div>
   </div>
@@ -71,11 +72,14 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "../assets/styles/variables.scss";
 
   .ms_select{
     background-color: $bgMain;
     color: white;
+  }
+  .ms_color_grey{
+    color: $subtitleColor;
   }
 </style>
