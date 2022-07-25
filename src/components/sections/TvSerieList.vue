@@ -35,8 +35,8 @@ export default {
   data: function () {
     return {
       apiKey: 'a5d177e96f7332485dbdb94d539665db',
-      apiGenresUrl: 'https://api.themoviedb.org/3/genre/tv/list?api_key=',
-      apiLanguage: '&language=en-US',
+      apiGenresUrl: 'https://api.themoviedb.org/3/genre/tv/list',
+      apiLanguage: 'en-US',
       genres: [],
       selected: '',
     };
@@ -44,7 +44,12 @@ export default {
   methods: {
     //prende i generi delle serie tv dalla api
     getTvSeriesGenres: function (){
-      axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
+      axios.get(this.apiGenresUrl, {
+        params: {
+          api_key: this.apiKey,
+          language: this.apiLanguage
+        }
+      })
       .then(response => {
         this.genres = response.data.genres;
       })
