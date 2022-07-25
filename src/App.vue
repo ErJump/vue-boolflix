@@ -28,7 +28,12 @@ export default {
   methods:{
     //chiamata per i film in base alla query
     getMovies: function (){
-      axios.get(`${this.apiUrlMovies}?api_key=${this.apiKey}&query=${this.query}`)
+      axios.get(this.apiUrlMovies, {
+        params: {
+          api_key: this.apiKey,
+          query: this.query
+        }
+      })
       .then(response => {
         this.moviesList = response.data.results;
       })
@@ -38,7 +43,12 @@ export default {
     },
     //chiamata per le serie tv in base alla query
     getTvSeries: function (){
-      axios.get(`${this.apiUrlSeries}?api_key=${this.apiKey}&query=${this.query}`)
+      axios.get(this.apiUrlSeries, {
+        params: {
+          api_key: this.apiKey,
+          query: this.query
+        }
+      })
       .then(response => {
         this.seriesList = response.data.results;
       })
