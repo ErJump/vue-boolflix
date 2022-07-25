@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ContentMain from './components/ContentMain.vue'
-import HeaderMain from './components/HeaderMain.vue'
+import ContentMain from './components/macro/ContentMain.vue'
+import HeaderMain from './components/macro/HeaderMain.vue'
 import axios from 'axios';
 export default {
   name: 'App',

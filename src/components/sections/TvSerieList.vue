@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
     <div class="d-flex justify-content-between mb-3">
-      <h2 class="text-white">Movies</h2>
+      <h2 class="text-white">TV Series</h2>
       <div class="d-flex align-items-center">
         <label class="text-white me-3 fs-4">Genres filter:</label>
         <select class="px-3 py-2 ms_select" v-model="selected">
@@ -11,39 +11,39 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 fs-4 ms_color_grey" v-if="moviesArrayFiltered == 0">No result</div>
-      <MovieCard v-for="movie in moviesArrayFiltered" :key="movie.id" :movie="movie" :genres="genres"/>
+      <div class="col-12 fs-4 ms_color_grey" v-if="seriesArrayFiltered == 0">No result</div>
+      <TvSerieCard v-for="serie in seriesArrayFiltered" :key="serie.id" :serie="serie" :genres="genres"/>
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from './MovieCard.vue';
+import TvSerieCard from '../commons/TvSerieCard.vue';
 import axios from 'axios';
 
 export default {
-  name: "MovieList",
-  components: { 
-    MovieCard 
+  name: 'TvSerieList',
+  props:{
+    seriesArray: {
+      type: Array,
+      required: true
+    }
   },
-  props: {
-      moviesArray: {
-        type: Array,
-        required: true
-      }
+  components: {
+    TvSerieCard
   },
   data: function () {
     return {
-        apiKey: 'a5d177e96f7332485dbdb94d539665db',
-        apiGenresUrl: "https://api.themoviedb.org/3/genre/movie/list?api_key=",
-        apiLanguage: "&language=en-US",
-        genres: [],
-        selected: "",
+      apiKey: 'a5d177e96f7332485dbdb94d539665db',
+      apiGenresUrl: 'https://api.themoviedb.org/3/genre/tv/list?api_key=',
+      apiLanguage: '&language=en-US',
+      genres: [],
+      selected: '',
     };
   },
   methods: {
-    //prende i generi dei film dalla api
-    getMoviesGenres: function (){
+    //prende i generi delle serie tv dalla api
+    getTvSeriesGenres: function (){
       axios.get(`${this.apiGenresUrl}${this.apiKey}${this.apiLanguage}`)
       .then(response => {
         this.genres = response.data.genres;
@@ -58,21 +58,28 @@ export default {
     }
   },
   created: function () {
-    this.getMoviesGenres();
+    this.getTvSeriesGenres();
   },
   computed: {
     //restituisce solo le serie tv che hanno il genere selezionato
-    moviesArrayFiltered: function (){
+    seriesArrayFiltered: function (){
       if(this.selected == ''){
-        return this.moviesArray;
+        return this.seriesArray;
       }
-      return this.moviesArray.filter(serie => serie.genre_ids.includes(this.selected));
+      return this.seriesArray.filter(serie => serie.genre_ids.includes(this.selected));
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-  @import "../assets/styles/variables.scss";
+<style lang="scss">
+  @import "../../assets/styles/variables.scss";
 
+  .ms_select{
+    background-color: $bgMain;
+    color: white;
+  }
+  .ms_color_grey{
+    color: $subtitleColor;
+  }
 </style>

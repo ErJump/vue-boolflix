@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import MovieList from './MovieList.vue';
-import TvSerieList from './TvSerieList.vue';
+import MovieList from '../sections/MovieList.vue';
+import TvSerieList from '../sections/TvSerieList.vue';
 export default {
     name: "ContentMain",
     props: {
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../assets/styles/variables.scss";
+  @import "../../assets/styles/variables.scss";
   main{
     background-color: $bgMain;
     min-height: 100vh;

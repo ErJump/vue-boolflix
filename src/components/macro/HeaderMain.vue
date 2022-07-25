@@ -3,11 +3,11 @@
     <div class="container-fluid px-5">
       <div class="row justify-content-between">
         <div class="col-2">
-          <img class="w-50" src="../assets/img/boolflix-logo.png" alt="boolflix logo">
+          <img class="w-50" src="../../assets/img/boolflix-logo.png" alt="boolflix logo">
         </div>
         <div class="col-3 d-flex align-items-center justify-content-end">
           <SearchBar @search="setSearch"/>
-          <img class="ms_avatar rounded-2" src="../assets/img/avatar.png" alt="avatar">
+          <img class="ms_avatar rounded-2" src="../../assets/img/avatar.png" alt="avatar">
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SearchBar from './SearchBar.vue';
+import SearchBar from '../commons/SearchBar.vue';
 export default {
   name: 'HeaderMain',
   components: {
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../assets/styles/variables.scss";
+  @import "../../assets/styles/variables.scss";
   header{
     height: 100px;
     position: fixed;
